@@ -25,6 +25,17 @@ function guardar(req, res) {
 
     })
 }
+
+/*-------------------------------------FUNCION DE PUT--------------------------------------------------------------
+
+Se utilizó la función  findByIdAndUpdate() la cual busca una coincidencia de ID comparando el recibido
+con los existentes en la BD y actualiza los datos indicados en el segundo argumento de la funcion (En este caso la funcion 
+actualiza el nombre).
+Se recibe los datos del body en json.
+Además, la opcion new se configura como true para que el documento que se envia como respuesta sea después de la modificación.
+
+
+*/
 function editar(req,res){
     let idpersona = req.body.id
     let name = req.body.nombre
@@ -36,6 +47,14 @@ function editar(req,res){
      })
 
 }
+/*-------------------------------------FUNCION DE DELETE--------------------------------------------------------------
+
+Se utilizó la función  findByIdAndDelete() la cual busca una coincidencia de ID comparando el recibido
+con los existentes en la BD y elimina el documento encontrado.
+Se recibe la ID a buscar mediante query params
+
+
+*/
 
 function eliminar(req,res){
     let idpersona = req.params.id
