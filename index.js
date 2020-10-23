@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 app.use('/api',persona_routes);
 
-mongoose.connect('mongodb+srv://danielbustos86:daniel123@cluster0-wxfwq.mongodb.net/UBB202001?retryWrites=true&w=majority', (err, res) => {
+mongoose.connect('mongodb+srv://ignaciollb:123@cluster0.gmmvc.mongodb.net/<dbname>?retryWrites=true&w=majority', (err, res) => {
 
     if(err){
         console.log("NO CONECTA")

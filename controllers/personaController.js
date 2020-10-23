@@ -1,5 +1,7 @@
 'use strict'
 
+const { findById } = require('../modelos/persona.js');
+const persona = require('../modelos/persona.js');
 // AQUI Cargamos el modelo para usarlo posteriormente en la siguiente clase
 var Persona = require('../modelos/persona.js');
 
@@ -22,6 +24,28 @@ function guardar(req, res) {
         res.status(200).send({ persona: personastore })
 
     })
+}
+function editar(req,res){
+    let idpersona = req.body.id
+    let name = req.body.nombre
+    Persona.findByIdAndUpdate(idpersona,{nombre: name},{new: true},(err,persona)=>{
+        if(err) return res.status(500).send({message:'error al realizar la peticion'})
+        if(!persona) return res.status(404).send({message:'Error la persona no existe'}) 
+        res.status(200).send({persona})
+
+     })
+
+}
+
+function eliminar(req,res){
+    let idpersona = req.params.id
+    Persona.findByIdAndDelete(idpersona,(err,persona)=>{
+        if(err) return res.status(500).send({message:'error al realizar la peticion'})
+        if(!persona) return res.status(404).send({message:'Error la persona no existe'}) 
+        res.status(200).send({message:'Persona eliminada'})
+
+     })
+
 }
 
 function buscar(req, res) {
@@ -66,6 +90,9 @@ function todos(req, res) {
 module.exports = {
     guardar,
     buscar,
-    buscarPorID,todos
+    buscarPorID,
+    todos,
+    eliminar,
+    editar
     
 };

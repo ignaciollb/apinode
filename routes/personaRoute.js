@@ -14,6 +14,8 @@ var api = express.Router();
 api.post('/personas', personaController.guardar);
 api.get('/personas', personaController.todos);
 api.get('/personabyID/:id', personaController.buscarPorID);
+api.delete('/personabyID/:id', personaController.eliminar);
+api.put('/personas/',personaController.editar)
 
 
 // api.post('/autoguardar',autoController.guardar);
