@@ -12,11 +12,8 @@ function guardar(req, res) {
 
     let persona = new Persona()
     persona.nombre = req.body.nombre
-    persona.apellido = req.body.apellido
-    persona.edad = req.body.edad
     persona.rut = req.body.rut
-    persona.phone = req.body.telefonos
-    persona.sexo = req.body.sexo
+    persona.telefonos = req.body.telefonos
     persona.save((err, personastore) => {
 
         if (err) return res.status(401).send(`Error base de datos> ${err}`)
@@ -39,11 +36,12 @@ Además, la opcion new se configura como true para que el documento que se envia
 function editar(req,res){
     let idpersona = req.body.id
     let name = req.body.nombre
-    Persona.findByIdAndUpdate(idpersona,{nombre: name},{new: true},(err,persona)=>{
+    let rut = req.body.rut
+    let phone = req.body.phone
+    Persona.findByIdAndUpdate(idpersona,{nombre: name, rut:rut, phone:phone},{new: true},(err,persona)=>{
         if(err) return res.status(500).send({message:'error al realizar la peticion'})
         if(!persona) return res.status(404).send({message:'Error la persona no existe'}) 
         res.status(200).send({persona})
-
      })
 
 }
