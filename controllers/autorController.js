@@ -2,6 +2,8 @@
 
 // AQUI Cargamos el modelo para usarlo posteriormente en la siguiente clase
 var Autor = require('../modelos/autor.js');
+var funciones = require('../helpers/funciones.js')
+var Libro = require('../modelos/libro.js');
 
 
 function guardar(req,res){
@@ -34,6 +36,8 @@ Autor.findByIdAndDelete(idautor,(err,autor)=>{
     })
 
 }
+
+
 
 
 module.exports = {

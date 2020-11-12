@@ -13,6 +13,7 @@ var api = express.Router();
 api.post('/libro', libroController.guardar);
 api.get('/libro', libroController.listar);
 api.delete('/librobyID/:id', libroController.eliminar);
+api.get('/librobyAutor/:id', libroController.librosAutor);
 
 
 

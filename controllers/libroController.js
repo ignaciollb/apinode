@@ -1,3 +1,4 @@
+const autor = require('../modelos/autor.js');
 var Libro = require('../modelos/libro.js');
 
 function guardar(req,res){
@@ -34,8 +35,21 @@ function listar(req,res){
      })
 }
 
+//Todos los libros de un Autor especifico, buscado por ID.
+
+function librosAutor(req,res){
+    let idautor = req.params.id
+    Libro.find({autor: idautor }) // filtra los datos desde el modelo Libro
+    //.populate('autor',{_id:{$eq: idautor}}) filtra datos del objeto autor
+    .populate('autor') 
+    .exec((err,libro) => {
+        res.status(200).send({libro})
+    })
+}
+
 module.exports = {
     guardar,
     listar,
-    eliminar
+    eliminar,
+    librosAutor
 };

@@ -13,6 +13,8 @@ var api = express.Router();
 api.post('/prestamo', prestamoController.guardar);
 api.get('/prestamo', prestamoController.listar);
 api.delete('/prestamobyID/:id', prestamoController.eliminar);
+api.get('/prestamoautorbyPersona/:id', prestamoController.autoresPersona);
+api.get('/prestamolibrobyPersona/:rut', prestamoController.librosPersona);
 
 
 
